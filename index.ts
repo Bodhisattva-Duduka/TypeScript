@@ -174,49 +174,136 @@
 
 // console.log(add(3,6));
 
-function greet(name : string, age?: number) : void{
-  console.log(name);
-  if(age){
-    console.log(age);
+// function greet(name : string, age?: number) : void{
+//   console.log(name);
+//   if(age){
+//     console.log(age);
+//   }
+// }
+
+// greet("bodhi");
+// greet("bodhi",19);
+
+// function greetUser(name: string = "bodhi"){
+//   console.log(name);
+// }
+
+// greetUser("Guest");
+
+// type MathOperation = (a: number, b:number) => number;
+
+// // const add : MathOperation = (a,b) => a+b;
+// // add(2,3);
+
+// function add(a: number, b: number): number {
+//   return a + b;
+// }
+
+// add(10, 20);
+
+// interface User {
+//   name: string;
+//   age: number;
+//   phone?: number;
+// }
+
+// function printUser(data: User) : void{
+//   console.log(data.name);
+//   console.log(data.age);
+//   console.log(data.phone);
+// }
+
+// printUser({name :"bodhi", age : 19, phone : 3223});
+
+// async function getName() : Promise<string> {
+//   return "Bodhi";
+// }
+
+// console.log(await getName())
+
+// type Status = "allowed" | "blocked";
+
+// const currentStatus : Status = "allowed";
+
+// let value : string | number
+
+// interface User {
+//   name: string;
+// }
+
+// interface Admin {
+//   name: string;
+//   permissions: string[];
+// }
+
+// function printData(data : User | Admin ){
+//   if("permissions" in data){
+//     console.log(data.permissions)
+//   }
+// }
+
+
+// type Result =
+//   | {
+//       status: "allowed";
+//       remaining: number;
+//     }
+//   | {
+//       status: "blocked";
+//       retryAfter: number;
+//     };
+
+
+let value: string | number;
+
+value = "bodhi";
+value = "23";
+
+
+function printValue(value : string | number) {
+  if(typeof value === "string"){
+    return value.toUpperCase();
+  } else {
+    return value.toFixed(2);
   }
 }
 
-greet("bodhi");
-greet("bodhi",19);
-
-function greetUser(name: string = "bodhi"){
-  console.log(name);
-}
-
-greetUser("Guest");
-
-type MathOperation = (a: number, b:number) => number;
-
-// const add : MathOperation = (a,b) => a+b;
-// add(2,3);
-
-function add(a: number, b: number): number {
-  return a + b;
-}
-
-add(10, 20);
+console.log(printValue("bodhi"))
+console.log(printValue("98"))
 
 interface User {
-  name: string;
-  age: number;
-  phone?: number;
+  name : string;
 }
 
-function printUser(data: User) : void{
-  console.log(data.name);
-  console.log(data.age);
-  console.log(data.phone);
+interface Admin {
+  name : string;
+  permissions : string[]
 }
 
-printUser({name :"bodhi", age : 19, phone : 3223});
-
-async function getName() : Promise<string> {
-  return "Bodhi";
+function checkUserType(user : User | Admin ){
+  if("permissions" in user){
+    console.log(user.permissions);
+  } else {
+    console.log(user.name)
+  }
 }
 
-console.log(await getName())
+type Result =
+  | {
+      status: "allowed";
+      remaining: number;
+    }
+  | {
+      status: "blocked";
+      retryAfter: number;
+    };
+
+
+function handleResult(result: Result) {
+  if(result.status === "allowed"){
+    console.log(result.remaining)
+  } else {
+    console.log(result.retryAfter)
+  }
+}
+
